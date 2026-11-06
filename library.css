@@ -23,6 +23,8 @@
 }
 
 * {
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
@@ -83,6 +85,7 @@ main {
 }
 
 .book-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
@@ -205,4 +208,44 @@ dialog h2 {
   background: var(--accent);
   color: #fff;
   font-weight: 600;
+}
+
+.card-remove {
+  align-self: flex-start;
+  /* margin-top: 0.5rem; */
+  /* padding: 0.1rem 0.1rem; */
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: .5rem;
+}
+
+.card-remove:hover {
+  color: #b3261e;
+  border-color: #b3261e;
+}
+
+.book-toggle {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.book-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
