@@ -1,0 +1,208 @@
+:root {
+  --bg: #eef1f4;
+  --surface: #ffffff;
+  --ink: #1b2430;
+  --muted: #5b6776;
+  --line: #d3dae2;
+  --accent: #1f5f8b;
+  --read: #2e7d57;
+  --font: Georgia, "Times New Roman", serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14181d;
+    --surface: #1d232b;
+    --ink: #e8ecf0;
+    --muted: #9aa6b4;
+    --line: #2e3742;
+    --accent: #6db3e0;
+    --read: #5fbf8f;
+  }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    line-height: 1.5;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.site-header h1 {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.75rem;
+}
+
+#new-book-btn {
+    padding: 0.55rem 1.1rem;
+    border: 0;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+#new-book-btn:hover {
+    filter: brightness(1.1);
+}
+
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Responsive grid: as many 240px+ columns as fit */
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.25rem 1.25rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--accent);
+    border-radius: 4px 10px 10px 4px; /* squared spine on the left, like a book */
+}
+
+.book-title {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 1.25rem;
+    line-height: 1.25;
+}
+
+.book-author {
+    margin: 0;
+    color: var(--muted);
+}
+
+.book-pages {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.book-read {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.book-read input {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--read);
+    cursor: pointer;
+}
+
+/* Cards for books you've finished get a green spine.
+   :has() lets the card react to its own checkbox, no JS class toggling needed. */
+.book-card:has(input:checked) {
+    border-left-color: var(--read);
+}
+
+@media (max-width: 480px) {
+    .site-header,
+    main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+dialog {
+  width: min(92vw, 400px);
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.5);
+}
+
+dialog h2 {
+  margin: 0 0 1rem;
+  font-family: var(--font);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.field input[type="text"],
+.field input[type="number"] {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+}
+
+.field-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.form-actions button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+#confirm-btn {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
